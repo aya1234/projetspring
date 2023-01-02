@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,7 +64,14 @@ public class ControleurProduit {
 		model.addAttribute("listeProduits", listeProduits);
 		return "produits";
 	}
-
+	
+	/*@RequestMapping("/user/produitscat")
+	public String produitsByCategorie(Model model) {
+		List<Produit> listeProduits = metierVentes.getProduits();
+		model.addAttribute("listeProduits", listeProduits);
+		return "produitCat";
+	}*/
+	
 	@PostMapping("/user/rechercheProduit")
 	public String rechercheProduit(long id, Model model) {
 		Produit produit = metierVentes.getProduitById(id);
@@ -95,7 +103,8 @@ public class ControleurProduit {
 	@PostMapping("/admin/ajouterProduitAlimentaire")
 	public String enregistrerProduitAlimentaire(ProduitAlimentaire pa, Model model) {		
 			metierVentes.saveProduit(pa);
-			return "redirect:/user/produits";
+			Long id = pa.getCategorie().getCodeCateg(); 
+			return "redirect:/user/detailcategorie?id="+id;
 	}
 	
 	@GetMapping("/admin/ajouterProduitCosmetique")

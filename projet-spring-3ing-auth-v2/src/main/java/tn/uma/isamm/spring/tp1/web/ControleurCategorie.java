@@ -56,6 +56,13 @@ public class ControleurCategorie {
 			return "categories";
 		}
 		
+		@GetMapping("/user/produitscat")
+		public String ProduitsCategorie(long id,Model model) {
+				Categorie categorie = metierVentes.getCategorieById(id);
+				model.addAttribute("categorie", categorie);
+				return "produits";
+		}
+		
 		@GetMapping("/user/detailcategorie")
 		public String detailCategorie(long id,Model model) {
 				Categorie categorie = metierVentes.getCategorieById(id);

@@ -65,16 +65,13 @@
 									<th></th>
 									<th></th>
 								</tr>
-								<tr th:each="p:${listeProduits}">
+								<tr th:each="p:${categorie.produits}">
 									<td width="2%" th:text="${p.codeProduit}"></td>
 									<td width="50%" th:text="${p.desigProduit}"></td>
-									<!-- 								<td> -->
-									<!-- 									<a th:text="${f.code}" -->
-									<!-- 										th:href="@{/user/consulterformation(page=0, size=2,id=${f.id})}"></a> -->
-									<!-- 								</td>								 -->
 									<td th:text="${p.prixProduit}"></td>
 									<td th:text="${p.uniteProduit}"></td>
 									<td th:text="${p.class.simpleName}"></td>
+								
 									<td width="5%"><a class="btn btn-sm btn-primary"
 										th:href="@{/admin/modifierProduit(id=${p.codeProduit})}">
 											<i class="fas fa-edit"></i>
