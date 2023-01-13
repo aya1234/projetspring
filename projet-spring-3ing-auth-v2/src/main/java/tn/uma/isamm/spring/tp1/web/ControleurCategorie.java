@@ -2,6 +2,7 @@ package tn.uma.isamm.spring.tp1.web;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,25 +44,23 @@ public class ControleurCategorie {
 			return "categories";
 		}
 		
-		@PostMapping("/user/recherchecategorie")
-		public String rechercheCategorie(String des, Model model) {
-			List<Categorie> listecategories = metierVentes.getCategoriesByDes(des);
-			boolean etat = true;
-			if (listecategories == null)
-				etat = false;
-			else {
-				model.addAttribute("listecategories", listecategories);
-				model.addAttribute("etat", etat);			
-			}
-			return "categories";
-		}
-		
-		@GetMapping("/user/produitscat")
-		public String ProduitsCategorie(long id,Model model) {
-				Categorie categorie = metierVentes.getCategorieById(id);
-				model.addAttribute("categorie", categorie);
-				return "produits";
-		}
+		 @PostMapping("/user/rechercheCategorieDesig")
+		    public String rechercheCategorieDes(String designation, Model model) {
+		        Categorie categorie = (Categorie) metierVentes.getCategoriesByDes(designation);
+		        boolean etat = true;
+		        if (categorie == null)
+		            etat = false;
+		        else {
+		            ArrayList<Categorie> categories = new ArrayList<Categorie>();
+		            categories.add(categorie);
+		            model.addAttribute("activePage", 0);
+		            model.addAttribute("size", 2);
+		            model.addAttribute("taillePagination", 0);
+		            model.addAttribute("listeCategories", categories);
+		            model.addAttribute("etat", etat);
+		        }
+		        return "categories";
+		    }
 		
 		@GetMapping("/user/detailcategorie")
 		public String detailCategorie(long id,Model model) {

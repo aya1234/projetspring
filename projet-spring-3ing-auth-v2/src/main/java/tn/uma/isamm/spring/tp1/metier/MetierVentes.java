@@ -1,6 +1,7 @@
 package tn.uma.isamm.spring.tp1.metier;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import tn.uma.isamm.spring.tp1.entities.Produit;
 public interface MetierVentes {
 	public List<Produit> getProduits();
 	public List<Categorie> getCategories();
-	public List<Categorie> getCategoriesByDes(String nomCateg);
+	public Categorie getCategoriesByDes(String nom);
 	public void saveProduit(Produit p);
 	public void saveCategorie(Categorie c);
 	public Produit getProduitById(long id);

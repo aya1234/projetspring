@@ -152,12 +152,17 @@ public class MetierVentesImpl implements MetierVentes {
 		// TODO Auto-generated method stub
 		categorieDAO.deleteById(id);
 	}
-
+	
 	@Override
-	public List<Categorie> getCategoriesByDes(String nomCateg) {
-		// TODO Auto-generated method stub
-		return categorieDAO.findByNomCateg(nomCateg);
-	}
+    public Categorie getCategoriesByDes(String designation) {
+        // TODO Auto-generated method stub
+        Optional<Categorie> c = categorieDAO.findByNomCateg(designation);
+        if (c.isPresent())
+            return c.get();
+        else
+            return null;
+
+    }
 	
 
 	

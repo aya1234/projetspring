@@ -62,9 +62,19 @@ public class ControleurProduit {
 		model.addAttribute("nbPages", listeProduits.getTotalPages());
 		model.addAttribute("nbElements", listeProduits.getTotalElements());
 		model.addAttribute("listeProduits", listeProduits);
+		int type= 1;
+		model.addAttribute("type", type);
 		return "produits";
 	}
 	
+	@GetMapping("/user/produitscat")
+	public String ProduitsCategorie(long id,Model model) {
+			Categorie categorie = metierVentes.getCategorieById(id);
+			model.addAttribute("categorie", categorie);
+			int type= 0;
+			model.addAttribute("type", type);
+			return "produits";
+	}
 	/*@RequestMapping("/user/produitscat")
 	public String produitsByCategorie(Model model) {
 		List<Produit> listeProduits = metierVentes.getProduits();

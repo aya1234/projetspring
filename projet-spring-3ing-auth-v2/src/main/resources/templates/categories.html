@@ -30,16 +30,16 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-6">
-								<form th:action="@{/user/recherchecategorie}" method="post">
-									<div class="input-group">
-										<input type="text" name="id" class="form-control"
-											placeholder="Code" />
-										<div class="input-group-append">
-											<button class="btn btn-secondary" type="submit">Ok</button>
-										</div>
-									</div>
-								</form>
-							</div>
+                            <form th:action="@{/user/rechercheCategorieDesig}" method="post">
+                                <div class="input-group">
+                                    <input type="text" name="designation" class="form-control"
+                                           placeholder="Designation" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="submit">Ok</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 							<div class="col-6">
 								<div class="text-right">
 									<a class="btn btn-sm btn-success center"
