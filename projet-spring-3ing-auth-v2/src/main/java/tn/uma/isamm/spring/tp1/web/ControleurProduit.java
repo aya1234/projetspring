@@ -195,6 +195,15 @@ public class ControleurProduit {
 		model.addAttribute("taillePagination", 0);
 					
 		}		
+		if (type.equals("designation")) {
+			List<Produit> listeProd = metierVentes.findAllByDesigProduitAsc();
+				
+			model.addAttribute("listeProduits", listeProd);		
+			model.addAttribute("activePage", 0);
+			model.addAttribute("size", 2);
+			model.addAttribute("taillePagination", 0);
+						
+			}
 		return "produits";
 	}
 	

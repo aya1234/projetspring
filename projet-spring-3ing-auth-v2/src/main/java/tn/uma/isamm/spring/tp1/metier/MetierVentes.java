@@ -30,6 +30,7 @@ public interface MetierVentes {
 	public List<AppUser> getAppUsers();
 	public List <Produit> getProduitByCateg(Categorie categorie);
 	public List <Produit> findAllByPrixProduit();
+	public List <Produit> findAllByDesigProduitAsc();
 
 	
 	

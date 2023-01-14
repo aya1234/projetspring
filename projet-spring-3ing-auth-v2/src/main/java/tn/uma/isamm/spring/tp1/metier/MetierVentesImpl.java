@@ -175,6 +175,12 @@ public class MetierVentesImpl implements MetierVentes {
 		// TODO Auto-generated method stub
 		return produitDAO.findAllByOrderByPrixProduitDesc();
 	}
+
+	@Override
+	public List<Produit> findAllByDesigProduitAsc() {
+		// TODO Auto-generated method stub
+		return produitDAO.findAllByOrderByDesigProduitAsc();
+	}
 	
 
 	
