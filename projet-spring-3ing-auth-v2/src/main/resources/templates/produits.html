@@ -30,15 +30,7 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-6">
-								<form th:action="@{/user/rechercheProduit}" method="post">
-									<div class="input-group">
-										<input type="text" name="id" class="form-control"
-											placeholder="Code" />
-										<div class="input-group-append">
-											<button class="btn btn-secondary" type="submit">Ok</button>
-										</div>
-									</div>
-								</form>
+								
 								<form th:action="@{/user/rechercheProduitByCateg}" th:object="${modelAndView}" method="get">
 								<div class="form-group row">
 									<label class="col-form-label" for="categorySelect">Les catégories:</label>
@@ -49,18 +41,21 @@
 									<button class="btn btn-secondary" type="submit">Ok</button>
 								</div>
 								</form>
-							</div>
-							<div class="col-6">
-								<div class="text-right">
-									<a class="btn btn-sm btn-success center"
-										th:href="@{/admin/ajouterProduitAlimentaire}"> <i
-										class="fas fa-plus-circle"></i> Ajout P. Alimentaire
-									</a> <a class="btn btn-sm btn-success center"
-										th:href="@{/admin/ajouterProduitCosmetique}"> <i
-										class="fas fa-plus-circle"></i> Ajout P. cosmétique
-									</a>
+								<form th:action="@{/admin/triProduit}" th:object="${modelAndView}" method="get">
+								<div class="form-group row">
+									<label class="col-form-label" for="categorySelect">Tri par:</label>
+									<select id="type" name="type" class="form-control" >
+										<option >Choisir un critère</option>
+										<option th:value="prix">Prix</option>
+										<option th:value="designation">Designation</option>
+									   
+										
+									</select>
+									<button class="btn btn-secondary" type="submit">Ok</button>
 								</div>
+								</form>
 							</div>
+						
 						</div>
 					</div>
 					<div class="card-body">

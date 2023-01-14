@@ -132,17 +132,20 @@ public class ControleurProduit {
 	}
 	
 	@GetMapping("/admin/ajouterProduitCosmetique")
-	public String ajoutProduitCosmetique(Model model) {		
+	public String ajoutProduitCosmetique(@RequestParam(name="id")Long id,Model model) {		
 			model.addAttribute("produit", new ProduitCosmetique());	
 			List<Categorie> listeCateg = metierVentes.getCategories();
 			model.addAttribute("listeCategories", listeCateg);
+			Categorie categorie = metierVentes.getCategorieById(id);
+			model.addAttribute("categorie", categorie);	
 			return "ajouterProduitCosmetique";
 	}
 	
 	@PostMapping("/admin/ajouterProduitCosmetique")
 	public String enregistrerProduitCosmetique(ProduitCosmetique pc, Model model) {		
 			metierVentes.saveProduit(pc);
-			return "redirect:/user/produits";
+			Long id = pc.getCategorie().getCodeCateg(); 
+			return "redirect:/user/detailcategorie?id="+id;
 	}
 	
 	@GetMapping("/admin/supprimerProduit")
@@ -181,4 +184,18 @@ public class ControleurProduit {
 		metierVentes.saveProduit(produit);
 		return "redirect:/user/produits";
 	}
+	@GetMapping("/admin/triProduit")
+	public String triProduit(String type, Model model) {
+		if (type.equals("prix")) {
+		List<Produit> listeProd = metierVentes.findAllByPrixProduit();
+			
+		model.addAttribute("listeProduits", listeProd);		
+		model.addAttribute("activePage", 0);
+		model.addAttribute("size", 2);
+		model.addAttribute("taillePagination", 0);
+					
+		}		
+		return "produits";
+	}
+	
 }

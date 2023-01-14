@@ -29,6 +29,8 @@ public interface MetierVentes {
 	public AppUser getUserByLogin(String login);
 	public List<AppUser> getAppUsers();
 	public List <Produit> getProduitByCateg(Categorie categorie);
+	public List <Produit> findAllByPrixProduit();
+
 	
 	
 	//Page<Produit> getProduitsPageableByDesignation(int page, int size, String mc);

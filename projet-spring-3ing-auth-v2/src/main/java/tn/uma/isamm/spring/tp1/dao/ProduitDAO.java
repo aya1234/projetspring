@@ -11,4 +11,6 @@ import tn.uma.isamm.spring.tp1.entities.Produit;
 public interface ProduitDAO extends JpaRepository<Produit, Long> {
 	public List<Produit> findByDesigProduitContaining(String mc);
 	List<Produit> findByCategorie(Categorie categorie);
+	List<Produit> findAllByOrderByPrixProduitDesc();
+	
 }
