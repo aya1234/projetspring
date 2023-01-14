@@ -51,7 +51,7 @@
 									<td th:if="${categorie.produits.size() == 0}" th:text="${categorie.produits.size()}"></td>
 									<td th:if="${categorie.produits.size() > 0}">
 									<a 
-									th:href="@{/user/produitscat(id=${categorie.codeCateg})}">consulter liste produits</a> 
+									th:href="@{/user/rechercheProduitByCateg?codeCateg={id}(id=${categorie.codeCateg})}">consulter liste produits</a> 
 									</td>
 								</tr>
 							</table>

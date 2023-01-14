@@ -62,19 +62,33 @@ public class ControleurProduit {
 		model.addAttribute("nbPages", listeProduits.getTotalPages());
 		model.addAttribute("nbElements", listeProduits.getTotalElements());
 		model.addAttribute("listeProduits", listeProduits);
-		int type= 1;
-		model.addAttribute("type", type);
+		List<Categorie> listeCateg = metierVentes.getCategories();
+		model.addAttribute("listeCategories", listeCateg);
+		return "produits";
+	}
+	@GetMapping("/user/rechercheProduitByCateg")
+	public String rechercheProduitByCateg(@RequestParam(value = "codeCateg", defaultValue = "NULL") Categorie categorie, Model model) {
+		Long id = null;
+		id = Long.valueOf(categorie.getCodeCateg());
+		List<Produit> produits = metierVentes.getProduitByCateg(categorie);
+		model.addAttribute("activePage", 0);
+		model.addAttribute("size", 2);
+		model.addAttribute("taillePagination", 0);
+		model.addAttribute("categorieId", id);
+		List<Categorie> listeCateg = metierVentes.getCategories();
+		model.addAttribute("listeCategories", listeCateg);
+		model.addAttribute("listeProduits", produits);
 		return "produits";
 	}
 	
-	@GetMapping("/user/produitscat")
+	/*@GetMapping("/user/produitscat")
 	public String ProduitsCategorie(long id,Model model) {
 			Categorie categorie = metierVentes.getCategorieById(id);
 			model.addAttribute("categorie", categorie);
 			int type= 0;
 			model.addAttribute("type", type);
 			return "produits";
-	}
+	}*/
 	/*@RequestMapping("/user/produitscat")
 	public String produitsByCategorie(Model model) {
 		List<Produit> listeProduits = metierVentes.getProduits();

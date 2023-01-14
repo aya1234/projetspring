@@ -163,6 +163,12 @@ public class MetierVentesImpl implements MetierVentes {
             return null;
 
     }
+
+	@Override
+	public List<Produit> getProduitByCateg(Categorie categorie) {
+		// TODO Auto-generated method stub
+		return produitDAO.findByCategorie(categorie);
+	}
 	
 
 	

@@ -28,6 +28,7 @@ public interface MetierVentes {
 	public void addRoleToUser(String login, String nomRole);
 	public AppUser getUserByLogin(String login);
 	public List<AppUser> getAppUsers();
+	public List <Produit> getProduitByCateg(Categorie categorie);
 	
 	
 	//Page<Produit> getProduitsPageableByDesignation(int page, int size, String mc);

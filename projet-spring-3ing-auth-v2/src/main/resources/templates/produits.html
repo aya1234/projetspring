@@ -39,6 +39,16 @@
 										</div>
 									</div>
 								</form>
+								<form th:action="@{/user/rechercheProduitByCateg}" th:object="${modelAndView}" method="get">
+								<div class="form-group row">
+									<label class="col-form-label" for="categorySelect">Les catégories:</label>
+									<select id="categorySelect" name="codeCateg" class="form-control" >
+										<option value=""  >Choisir une catégorie</option>
+										<option th:each="c:${listeCategories}" th:value="${c.codeCateg}" th:text="${c.nomCateg}" th:selected="${c.codeCateg == categorieId}"></option>
+									</select>
+									<button class="btn btn-secondary" type="submit">Ok</button>
+								</div>
+								</form>
 							</div>
 							<div class="col-6">
 								<div class="text-right">
@@ -66,24 +76,7 @@
 									<th></th>
 								</tr>
 								
-								<tr th:if="${type == 1}" th:each="p:${listeProduits}">
-									<td width="2%" th:text="${p.codeProduit}"></td>
-									<td width="50%" th:text="${p.desigProduit}"></td>
-									<td th:text="${p.prixProduit}"></td>
-									<td th:text="${p.uniteProduit}"></td>
-									<td th:text="${p.class.simpleName}"></td>
-								
-									<td width="5%"><a class="btn btn-sm btn-primary"
-										th:href="@{/admin/modifierProduit(id=${p.codeProduit})}">
-											<i class="fas fa-edit"></i>
-									</a></td>
-									<td width="5%"><a class="btn btn-sm btn-danger"
-										onclick="return confirm('Etes-vous sûr de vouloir supprimer cette formation?');"
-										th:href="@{/admin/supprimerProduit(id=${p.codeProduit}, activePage=${activePage}, nbElements = ${nbElements}, size = ${size})}">
-											<i class="fas fa-trash-alt"></i>
-									</a></td>
-								</tr>
-							    <tr th:if="${type == 0}" th:each="p:${categorie.produits}">
+								<tr th:each="p:${listeProduits}">
 									<td width="2%" th:text="${p.codeProduit}"></td>
 									<td width="50%" th:text="${p.desigProduit}"></td>
 									<td th:text="${p.prixProduit}"></td>
